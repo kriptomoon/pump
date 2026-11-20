@@ -4,82 +4,174 @@
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#090d16"><title>Pump Callout Hunter</title>
 <style>
-:root{color-scheme:dark;--bg:#090d16;--panel:#111a2a;--line:#29384f;--muted:#93a4bd;--text:#edf4ff;--green:#38d9a4;--red:#ff687e;--yellow:#f5c76b;--blue:#77adff}
+:root{color-scheme:dark;--bg:#090d16;--panel:#111a2a;--line:#29384f;--muted:#93a4bd;--text:#edf4ff;--green:#38d9a4;--red:#ff687e;--yellow:#f5c76b}
 *{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at top,#172944 0,#090d16 55%);color:var(--text);font:14px system-ui,-apple-system,Segoe UI,sans-serif;padding:18px 12px 30px}.wrap{max-width:1000px;margin:auto}
 header{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:14px}.brand{font-weight:900;letter-spacing:.7px}.brand span{color:var(--green)}.status{font-size:12px;color:var(--muted)}.dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:#77839a;margin-right:6px}.dot.on{background:var(--green)}
-.hero,.panel{background:#111a2a;border:1px solid var(--line);border-radius:16px;padding:15px;margin:12px 0}.hero{background:linear-gradient(135deg,#1a304b,#111a2a)}h1{font-size:25px;margin:6px 0}.sub,.note{color:var(--muted);font-size:12px;line-height:1.5}.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:12px 0}.stat,.metric{background:#0b1321;border:1px solid #1d2a3e;border-radius:11px;padding:10px}.stat small,.metric small{display:block;color:var(--muted);font-size:10px;text-transform:uppercase}.stat b{font-size:20px;display:block;margin-top:3px}
+.hero,.panel{background:#111a2a;border:1px solid var(--line);border-radius:16px;padding:15px;margin:12px 0}.hero{background:linear-gradient(135deg,#1a304b,#111a2a)}h1{font-size:25px;margin:6px 0}.sub,.note{color:var(--muted);font-size:12px;line-height:1.5}.stats{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin:12px 0}.stat,.metric{background:#0b1321;border:1px solid #1d2a3e;border-radius:11px;padding:10px}.stat small,.metric small{display:block;color:var(--muted);font-size:10px;text-transform:uppercase}.stat b{font-size:20px;display:block;margin-top:3px}
 h2{font-size:13px;letter-spacing:.5px;margin:0}.head{display:flex;justify-content:space-between;align-items:center;margin-bottom:11px}.filters{display:grid;grid-template-columns:repeat(4,1fr);gap:9px}.field label{display:block;color:var(--muted);font-size:11px;margin-bottom:5px}.field input,.field select{width:100%;background:#09111e;border:1px solid var(--line);color:var(--text);border-radius:9px;padding:10px;font-size:13px}.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}.btn{background:#1b2a40;color:var(--text);border:1px solid var(--line);border-radius:9px;padding:10px 13px;font-weight:700;cursor:pointer}.primary{background:#123e34;border-color:#26765d;color:#c8ffea}
-.tokens{display:grid;grid-template-columns:1fr 1fr;gap:10px}.token{background:linear-gradient(145deg,#162338,#101827);border:1px solid var(--line);border-radius:13px;padding:12px;min-width:0}.tokenhead{display:flex;justify-content:space-between;gap:8px}.name{font-weight:850;font-size:15px;overflow-wrap:anywhere}.symbol{color:var(--green);font-size:11px}.age{color:var(--muted);font-size:11px;white-space:nowrap}.metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin:10px 0}.metric b{display:block;font-size:12px;margin-top:4px;overflow-wrap:anywhere}.signal{font-weight:850;font-size:11px;margin:8px 0}.good{color:var(--green)}.bad{color:var(--red)}.warn{color:var(--yellow)}.neutral{color:var(--muted)}.bar{height:5px;background:#29384f;border-radius:9px;overflow:hidden;margin:6px 0}.bar i{display:block;height:100%;background:var(--green)}.links{display:flex;gap:7px;margin-top:9px}.links a,.links button{flex:1;text-align:center;text-decoration:none;color:#cfe1ff;background:#19365d;border:1px solid #2d507c;border-radius:8px;padding:8px;font-size:11px;font-weight:750}.links button{background:#123e34;border-color:#26765d;color:#c8ffea}.empty{padding:24px;text-align:center;color:var(--muted);font-size:12px}.pill{font-size:10px;padding:4px 7px;border-radius:20px;background:#25344a;color:#c7d5e8}.foot{font-size:10px;color:#73839c;text-align:center;margin:18px}
-@media(max-width:700px){.filters{grid-template-columns:1fr 1fr}.tokens{grid-template-columns:1fr}.stats{grid-template-columns:1fr 1fr}}@media(max-width:420px){.metrics{grid-template-columns:1fr 1fr}.hero h1{font-size:21px}}
+.tokens{display:grid;grid-template-columns:1fr 1fr;gap:10px}.token{background:linear-gradient(145deg,#162338,#101827);border:1px solid var(--line);border-radius:13px;padding:12px;min-width:0}.tokenhead{display:flex;justify-content:space-between;gap:8px}.name{font-weight:850;font-size:15px;overflow-wrap:anywhere}.symbol{color:var(--green);font-size:11px}.age{color:var(--muted);font-size:11px;white-space:nowrap}.metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin:10px 0}.metric b{display:block;font-size:12px;margin-top:4px;overflow-wrap:anywhere}.signal{font-weight:850;font-size:11px;margin:8px 0}.good{color:var(--green)}.bad{color:var(--red)}.warn{color:var(--yellow)}.neutral{color:var(--muted)}.links{display:flex;gap:7px;margin-top:9px}.links a,.links button{flex:1;text-align:center;text-decoration:none;color:#cfe1ff;background:#19365d;border:1px solid #2d507c;border-radius:8px;padding:8px;font-size:11px;font-weight:750}.links button{background:#123e34;border-color:#26765d;color:#c8ffea}.empty{padding:24px;text-align:center;color:var(--muted);font-size:12px}.pill{font-size:10px;padding:4px 7px;border-radius:20px;background:#25344a;color:#c7d5e8}.foot{font-size:10px;color:#73839c;text-align:center;margin:18px}.notice{border:1px solid #715d2c;background:#2b2515;color:#f6dfa0;border-radius:10px;padding:10px;font-size:12px;line-height:1.5;margin:10px 0}
+@media(max-width:700px){.filters{grid-template-columns:1fr 1fr}.tokens{grid-template-columns:1fr}.stats{grid-template-columns:repeat(2,1fr)}}@media(max-width:420px){.metrics{grid-template-columns:1fr 1fr}.hero h1{font-size:21px}}
 </style></head>
 <body><div class="wrap">
-<header><div class="brand">PUMP <span>CALLOUT</span> HUNTER · NEW</div><div class="status"><i class="dot" id="dot"></i><span id="status">Spajanje…</span></div></header>
-<section class="hero"><div class="sub">SOLANA · PUMP.FUN EARLY RADAR</div><h1>Ne tražimo samo launch.<br><span style="color:var(--green)">Tražimo potvrđen momentum.</span></h1><p class="sub">Novi launch → kratko praćenje BUY/SELL aktivnosti → provjera tržišnih podataka kad se pojavi DEX par. Bez walleta, kupnje i automatskih calloutova.</p></section>
-<div class="stats"><div class="stat"><small>Launches</small><b id="total">0</b></div><div class="stat"><small>Prikazano</small><b id="shown">0</b></div><div class="stat"><small>Trade praćenja</small><b id="tracked">0/5</b></div><div class="stat"><small>DEX parovi</small><b id="pairs">0</b></div></div>
-<section class="panel"><div class="head"><h2>FILTERI ZA KANDIDATE</h2><span class="pill">Filteri ne stvaraju score</span></div>
+<header><div class="brand">PUMP <span>CALLOUT</span> HUNTER · AUDITED BUILD</div><div class="status"><i class="dot" id="dot"></i><span id="status">Spajanje…</span></div></header>
+<section class="hero"><div class="sub">SOLANA · PUMP.FUN EARLY RADAR</div><h1>Ne tražimo samo launch.<br><span style="color:var(--green)">Tražimo potvrđen momentum.</span></h1><p class="sub">Novi launch → potvrđena pretplata na BUY/SELL → provjera DEX podataka. Bez walleta, kupnje i automatskih calloutova.</p></section>
+<div class="notice"><b>Važno za besplatni feed:</b> anonimni PumpDev pristup dopušta 5 aktivnih token pretplata, 1 WebSocket vezu po IP adresi i 1.000 BUY/SELL poruka mjesečno. Nemoj istovremeno držati aplikaciju otvorenu na računalu i iPhoneu ako su na istoj Wi‑Fi mreži. Za korištenje na drugom uređaju prvo zatvori stranicu na prvom.</div>
+<div class="stats"><div class="stat"><small>Launches</small><b id="total">0</b></div><div class="stat"><small>Prikazano</small><b id="shown">0</b></div><div class="stat"><small>Pretplate potvrđene</small><b id="tracked">0/5</b></div><div class="stat"><small>Trade poruke</small><b id="tradeTotal">0</b></div><div class="stat"><small>DEX parovi</small><b id="pairs">0</b></div></div>
+<section class="panel"><div class="head"><h2>FILTERI ZA KANDIDATE</h2><span class="pill">Bez umjetnog launch scorea</span></div>
 <div class="filters">
 <div class="field"><label>Min. BUY udio (%)</label><input id="fBuy" type="number" min="0" max="100" value="60"></div>
 <div class="field"><label>Min. jedinstvenih kupaca</label><input id="fWallets" type="number" min="0" value="5"></div>
 <div class="field"><label>Min. neto priljev (SOL)</label><input id="fNet" type="number" min="-100" step=".1" value="0.3"></div>
 <div class="field"><label>Min. likvidnost (USD)</label><input id="fLiq" type="number" min="0" value="5000"></div>
-<div class="field"><label>Max. pad od praćenog vrha (%)</label><input id="fDrop" type="number" min="0" max="100" value="20"></div>
+<div class="field"><label>Max. pad od prvog DEX snimka (%)</label><input id="fDrop" type="number" min="0" max="100" value="20"></div>
 <div class="field"><label>Min. transakcija</label><input id="fTrades" type="number" min="0" value="8"></div>
 <div class="field"><label>Prikaz</label><select id="fView"><option value="all">Svi tokeni</option><option value="candidate">Samo kandidati</option><option value="avoid">Samo upozorenja</option></select></div>
 <div class="field"><label>Traži naziv / ticker / CA</label><input id="search" placeholder="Naziv ili mint adresa"></div>
-</div><div class="actions"><button class="btn primary" id="apply">Primijeni</button><button class="btn" id="pause">Pauziraj feed</button><button class="btn" id="clear">Očisti listu</button></div></section>
+</div><div class="actions"><button class="btn primary" id="apply">Primijeni</button><button class="btn" id="pause">Pauziraj feed</button><button class="btn" id="clear">Očisti listu</button></div><p class="note" id="diag">Čekam potvrdu servera…</p></section>
 <section class="panel"><div class="head"><h2>LIVE LAUNCHES & ANALIZA</h2><span class="sub" id="last">Čekam događaje…</span></div><div class="tokens" id="feed"><div class="empty">Čekam nove Pump.fun tokene…</div></div></section>
-<section class="panel"><h2>VAŽNO — KAKO ČITATI SIGNAL</h2><p class="note"><b class="good">MOMENTUM POTVRĐEN</b>: minimalni uzorak BUY/SELL zadovoljava postavljene kriterije i DEX podaci, ako postoje, ne pokazuju prevelik pad. <b class="warn">ČEKAJ PODATKE</b>: premalo transakcija ili još nema DEX para. <b class="bad">IZBJEGAVATI</b>: prevladavaju prodaje, neto priljev je negativan ili je pad od praćenog vrha prevelik.</p><p class="note">Ovo nije sigurnosna provjera, ne otkriva sve bundle/wash trading aktivnosti i ne jamči rast. Podaci s DEX Screenera dolaze tek kad token dobije indeksirani pool. Trade feed je besplatan PumpDev endpoint s javno objavljenim limitima: anonimno do 5 pretplata i 10.000 trade poruka mjesečno. Ako izvor ne radi, aplikacija jasno prikazuje nedostupnost — nikad ne pretvara nedostajuće podatke u nulu.</p></section>
-<div class="foot">PUMP CALLOUT HUNTER NEW · public data only · no wallet · no trading</div></div>
+<section class="panel"><h2>VAŽNO — KAKO ČITATI SIGNAL</h2><p class="note"><b class="good">MOMENTUM POTVRĐEN</b>: potvrđena trade pretplata, dovoljan uzorak, BUY udio i neto SOL zadovoljavaju kriterije te DEX likvidnost prelazi minimum. <b class="warn">ČEKAJ PODATKE</b>: token još nije praćen, pretplata nije potvrđena ili uzorak je premalen. <b class="bad">IZBJEGAVATI</b>: prodajni pritisak, negativan neto priljev ili prevelik pad od prvog zabilježenog DEX snimka.</p><p class="note">Neto SOL računamo samo kada je quote imovina SOL ili kada feed daje normalizirani solAmount. Nepoznata quote valuta ne ulazi u SOL zbroj. Jedinstveni kupci broje se po traderPublicKey. DEX pad nije ATH pad: mjeri se samo od prvog snimka koji je ova stranica zabilježila. Ovo nije honeypot/rug-pull provjera i ne jamči rast.</p></section>
+<div class="foot">PUMP CALLOUT HUNTER · public data only · no wallet · no trading</div></div>
 <script>
-(()=> {
-"use strict";
-const WS="wss://pumpdev.io/ws", DEX="https://api.dexscreener.com/token-pairs/v1/solana/";
-const MAX=100, MAX_TRACK=5, SAMPLE_MS=90000, DEX_POLL_MS=60000;
-let socket=null, paused=false, retry=2000, timer=null, total=0, lastDex=0;
-const tokens=new Map(), queue=[], active=new Map();
-const $=id=>document.getElementById(id);
-const n=v=>{if(v===null||v===undefined||v==="")return null;const x=Number(v);return Number.isFinite(x)?x:null};
-const fmt=(v,d=2)=>v===null||v===undefined?"N/A":Number(v).toLocaleString("en-US",{maximumFractionDigits:d});
+(()=>{"use strict";
+const WS="wss://pumpdev.io/ws",DEX="https://api.dexscreener.com/token-pairs/v1/solana/",MAX=100,MAX_TRACK=5,SAMPLE_MS=90000,DEX_BATCH=6,DEX_INTERVAL=60000,WRAPPED_SOL="So11111111111111111111111111111111111111112";
+let socket=null,paused=false,retry=2000,retryTimer=null,queue=[],total=0,tradeTotal=0,subPending=new Set(),active=new Map(),dexCursor=0,lastSocketMessage=0;
+const tokens=new Map(),$=id=>document.getElementById(id);
+const num=v=>{if(v===null||v===undefined||v==="")return null;const x=Number(v);return Number.isFinite(x)?x:null};
+const fmt=(v,d=2)=>v===null||v===undefined?"—":Number(v).toLocaleString("en-US",{maximumFractionDigits:d});
 const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const age=t=>Math.max(0,(Date.now()-t)/60000);
-function status(s,on=false){$("status").textContent=s;$("dot").classList.toggle("on",on)}
-function send(x){if(socket?.readyState===WebSocket.OPEN)socket.send(JSON.stringify(x))}
-function connect(){if(paused)return;clearTimeout(timer);status("Spajanje…");try{socket=new WebSocket(WS)}catch(e){reconnect();return}
-socket.onopen=()=>{retry=2000;status("LIVE · PumpDev",true);send({method:"subscribeNewToken"})};
-socket.onmessage=e=>{let d;try{d=JSON.parse(e.data)}catch{return}
-if(d.txType==="create"&&d.mint){add(d);return}
-if((d.txType==="buy"||d.txType==="sell")&&d.mint){trade(d);return}
-if(d.type==="error"||d.message){status("Feed: "+String(d.message||d.code||"upozorenje").slice(0,35),false)}
-};
-socket.onerror=()=>status("Greška WebSocket veze");
-socket.onclose=()=>{status("Veza prekinuta");reconnect()};
+function setStatus(s,on=false){$("status").textContent=s;$("dot").classList.toggle("on",on)}
+function setDiag(s){$("diag").textContent=s}
+function send(o){if(socket?.readyState===WebSocket.OPEN){socket.send(JSON.stringify(o));return true}return false}
+function updateCounters(){$("tracked").textContent=active.size+"/"+MAX_TRACK;$("tradeTotal").textContent=tradeTotal}
+function reconnect(){if(paused)return;clearTimeout(retryTimer);retryTimer=setTimeout(connect,retry);retry=Math.min(30000,retry*2)}
+function connect(){if(paused)return;clearTimeout(retryTimer);setStatus("Spajanje…");try{socket=new WebSocket(WS)}catch(e){setDiag("WebSocket se nije mogao otvoriti: "+e.message);reconnect();return}
+socket.onopen=()=>{retry=2000;setStatus("Veza otvorena · čeka potvrde",true);send({method:"subscribeNewToken"});setDiag("Poslan zahtjev za LIVE launch feed. Čekam potvrdu servera.");resubscribeRecent()};
+socket.onmessage=e=>{lastSocketMessage=Date.now();let d;try{d=JSON.parse(e.data)}catch{setDiag("Primljena je nečitljiva poruka; preskočena.");return}handleMessage(d)};
+socket.onerror=()=>{setStatus("Greška WebSocket veze");setDiag("WebSocket greška. Provjeri postoji li druga otvorena instanca aplikacije na istoj IP/Wi‑Fi mreži.")};
+socket.onclose=()=>{setStatus("Veza prekinuta");setDiag("Veza je zatvorena. Provjeravam ponovnu vezu…");reconnect()};
 }
-function reconnect(){if(paused)return;clearTimeout(timer);timer=setTimeout(connect,retry);retry=Math.min(30000,retry*2)}
-function add(d){if(tokens.has(d.mint))return;
-const x={mint:d.mint,name:d.name||"Unknown",symbol:d.symbol||"",created:Date.now(),curveSol:n(d.vSolInBondingCurve),marketCapSol:n(d.marketCapSol),initialBuyTokens:n(d.initialBuy),trades:[],dex:null,dexChecked:0,peak:null,drop:null,trackState:"Čeka red"};
-tokens.set(x.mint,x);total++;while(tokens.size>MAX)tokens.delete(tokens.keys().next().value);
-queue.push(x.mint);pump();render();$("total").textContent=total;$("last").textContent="Zadnji launch "+new Date().toLocaleTimeString("hr-HR");
+function handleMessage(d){
+ if(d.type==="connected"){setStatus("PumpDev povezan",true);return}
+ if(d.type==="connectionStatus"){setStatus(d.connected?"Upstream LIVE":"Upstream nedostupan",!!d.connected);return}
+ if(d.type==="subscribed"&&d.method==="subscribeTokenTrade"){
+   const accepted=Array.isArray(d.keys)?d.keys:[];
+   for(const mint of accepted){subPending.delete(mint);if(tokens.has(mint)){active.set(mint,{until:Date.now()+SAMPLE_MS});tokens.get(mint).trackState="Aktivno · potvrđeno";tokens.get(mint).sampleStarted=Date.now()}}
+   for(const mint of [...subPending]){if(tokens.has(mint)&&!accepted.includes(mint)){subPending.delete(mint);tokens.get(mint).trackState="Pretplata nije potvrđena"}}
+   setDiag("Server je potvrdio "+accepted.length+" od zatraženih token pretplata. BUY/SELL brojači vrijede samo za potvrđene pretplate.");updateCounters();render();pump();return
+ }
+ if(d.type==="error"||d.type==="notice"){
+   const msg=String(d.message||d.code||"Server notice");
+   setDiag("PumpDev: "+msg);
+   if(d.code==="SUBSCRIPTION_LIMIT"||d.code==="TOKEN_SUBSCRIBE_NORMALIZED"){for(const mint of [...subPending]){subPending.delete(mint);if(tokens.has(mint))tokens.get(mint).trackState="Pretplata odbijena"}}
+   render();return
+ }
+ if(d.type){return}
+ if(d.txType==="create"&&d.mint){addToken(d);return}
+ if((d.txType==="buy"||d.txType==="sell")&&d.mint){recordTrade(d);return}
+ if((d.txType==="complete"||d.txType==="create_pool")&&d.mint){const x=tokens.get(d.mint);if(x){x.migration=d.txType==="complete"?"Graduirao":"PumpSwap pool otvoren";render()}return}
 }
-function pump(){if(paused||socket?.readyState!==WebSocket.OPEN)return;while(active.size<MAX_TRACK&&queue.length){const mint=queue.shift(),x=tokens.get(mint);if(!x)continue;active.set(mint,{until:Date.now()+SAMPLE_MS});x.trackState="Prati BUY/SELL";send({method:"subscribeTokenTrade",keys:[mint]});}$("tracked").textContent=active.size+"/5"}
-function trade(d){const x=tokens.get(d.mint);if(!x||!active.has(d.mint))return;const sol=n(d.solAmount);x.trades.push({at:Date.now(),buy:d.txType==="buy",sol:sol,trader:d.traderPublicKey||d.user||null});x.trades=x.trades.filter(t=>Date.now()-t.at<=SAMPLE_MS);render()}
-function metrics(x){const ts=x.trades.filter(t=>Date.now()-t.at<=SAMPLE_MS),buys=ts.filter(t=>t.buy),sells=ts.filter(t=>!t.buy),wallets=new Set(buys.map(t=>t.trader).filter(Boolean)).size;const buySol=buys.reduce((a,t)=>a+(t.sol||0),0),sellSol=sells.reduce((a,t)=>a+(t.sol||0),0);return {count:ts.length,buys:buys.length,sells:sells.length,wallets,buyPct:ts.length?100*buys.length/ts.length:null,net:buySol-sellSol,buySol,sellSol}}
-async function dexRefresh(){const now=Date.now();const batch=[...tokens.values()].filter(x=>now-x.dexChecked>=DEX_POLL_MS).slice(0,8);for(const x of batch){x.dexChecked=now;try{const r=await fetch(DEX+encodeURIComponent(x.mint),{cache:"no-store"});if(!r.ok)continue;const pairs=await r.json();if(!Array.isArray(pairs)||!pairs.length)continue;const p=pairs.filter(p=>p.chainId==="solana").sort((a,b)=>(b.liquidity?.usd||0)-(a.liquidity?.usd||0))[0];if(!p)continue;const price=n(p.priceUsd),liq=n(p.liquidity?.usd),vol=n(p.volume?.m5),tx=p.txns?.m5||{};x.dex={price,liq,vol,buys:n(tx.buys),sells:n(tx.sells),url:p.url||`https://dexscreener.com/solana/${p.pairAddress}`,fdv:n(p.fdv),pairCreatedAt:n(p.pairCreatedAt)};if(price!==null){x.peak=x.peak===null?price:Math.max(x.peak,price);x.drop=x.peak>0?100*(x.peak-price)/x.peak:null;}}catch(e){} }render();$("pairs").textContent=[...tokens.values()].filter(x=>x.dex).length}
-function evaluate(x){const s=metrics(x),fBuy=n($("fBuy").value)??60,fW=n($("fWallets").value)??5,fNet=n($("fNet").value)??.3,fTrades=n($("fTrades").value)??8,fLiq=n($("fLiq").value)??5000,fDrop=n($("fDrop").value)??20;
-if(s.count<fTrades||s.wallets<fW||s.buyPct===null)return ["ČEKAJ UZORAK","warn",false];
-if(s.net<=0||s.buyPct<50)return ["IZBJEGAVATI · PRODAJE","bad",false];
-if(x.drop!==null&&x.drop>fDrop)return ["IZBJEGAVATI · PAD OD VRHA","bad",false];
-if(!x.dex)return ["ČEKAJ DEX PODATKE","warn",false];
-if(x.dex.liq===null||x.dex.liq<fLiq)return ["NISKA / NEPOZNATA LIKVIDNOST","bad",false];
-if(s.buyPct>=fBuy&&s.wallets>=fW&&s.net>=fNet)return ["MOMENTUM POTVRĐEN","good",true];
-return ["PRATITI · BEZ POTVRDE","warn",false]}
-function render(){const q=$("search").value.trim().toLowerCase(),view=$("fView").value;
-const rows=[...tokens.values()].filter(x=>{const [lab,cand,ok]=evaluate(x),s=metrics(x);return (!q||[x.name,x.symbol,x.mint].some(v=>String(v||"").toLowerCase().includes(q)))&&(view==="all"||(view==="candidate"&&ok)||(view==="avoid"&&(lab.includes("IZBJEGAVATI")||lab.includes("NISKA"))))}).sort((a,b)=>{const A=evaluate(a)[2],B=evaluate(b)[2];return Number(B)-Number(A)||b.created-a.created});
-$("shown").textContent=rows.length;$("feed").innerHTML=rows.length?rows.map(x=>{const s=metrics(x),[lab,cls]=evaluate(x),d=x.dex;return `<article class="token"><div class="tokenhead"><div><div class="name">${esc(x.name)}</div><div class="symbol">$${esc(x.symbol)}</div></div><div class="age">${fmt(age(x.created),1)} min</div></div><div class="signal ${cls}">${lab}</div><div class="metrics"><div class="metric"><small>BUY / SELL</small><b>${s.buys} / ${s.sells}</b></div><div class="metric"><small>Jedinstveni kupci</small><b>${s.wallets}</b></div><div class="metric"><small>Neto SOL · uzorak</small><b>${fmt(s.net,3)}</b></div><div class="metric"><small>BUY udio</small><b>${fmt(s.buyPct,0)}%</b></div><div class="metric"><small>Likvidnost USD</small><b>${d?("$"+fmt(d.liq,0)):"N/A"}</b></div><div class="metric"><small>Pad od praćenog vrha</small><b>${x.drop===null?"N/A":fmt(x.drop,1)+"%"}</b></div></div><div class="note">${s.count} trade poruka · ${x.trackState}${d?` · 5m DEX: ${fmt(d.buys,0)} BUY / ${fmt(d.sells,0)} SELL · volumen $${fmt(d.vol,0)}`:" · DEX par još nije dostupan"}</div><div class="links"><a target="_blank" rel="noopener" href="https://pump.fun/coin/${encodeURIComponent(x.mint)}">Pump.fun ↗</a><a target="_blank" rel="noopener" href="${esc(d?.url||"https://dexscreener.com/solana/"+x.mint)}">DEX Screener ↗</a><button data-copy="${esc(x.mint)}">Kopiraj CA</button></div></article>`}).join(""):'<div class="empty">Nema tokena za odabrane filtere.</div>'}
+function addToken(d){
+ if(tokens.has(d.mint))return;
+ const x={mint:d.mint,name:d.name||"Unknown",symbol:d.symbol||"",created:Date.now(),trades:[],dex:null,dexChecked:0,dexFirstPrice:null,dexPeak:null,drop:null,trackState:"Čeka red",sampleStarted:null,sampleEnded:null,migration:null};
+ tokens.set(x.mint,x);total++;$("total").textContent=total;
+ while(tokens.size>MAX){const oldest=[...tokens.keys()][0];tokens.delete(oldest);queue=queue.filter(m=>m!==oldest)}
+ // Most recent launches get priority; discard stale backlog rather than monitoring very old tokens.
+ queue=queue.filter(m=>m!==x.mint);queue.unshift(x.mint);
+ while(queue.length>25){const stale=queue.pop(),old=tokens.get(stale);if(old&&old.trackState==="Čeka red")old.trackState="Preskočen · red predug"}
+ $("last").textContent="Zadnji launch "+new Date().toLocaleTimeString("hr-HR");pump();render();
+}
+function resubscribeRecent(){
+ active.clear();subPending.clear();queue=[];
+ const recent=[...tokens.values()].sort((a,b)=>b.created-a.created);
+ for(const x of recent){x.trackState="Čeka red";x.sampleStarted=null;x.sampleEnded=null;x.sampleRequested=null;x.trades=[];queue.push(x.mint)}
+ pump();
+}
+function pump(){
+ if(paused||socket?.readyState!==WebSocket.OPEN)return;
+ const slots=MAX_TRACK-active.size-subPending.size;if(slots<=0)return;
+ const batch=[];
+ while(batch.length<slots&&queue.length){const mint=queue.shift(),x=tokens.get(mint);if(!x||active.has(mint)||subPending.has(mint))continue;batch.push(mint);subPending.add(mint);x.sampleRequested=Date.now();x.trackState="Zahtjev poslan · čeka potvrdu"}
+ if(batch.length){send({method:"subscribeTokenTrade",keys:batch});setDiag("Zatražena pretplata za "+batch.length+" najnovijih tokena; čeka se server ACK.");updateCounters();render()}
+}
+function recordTrade(d){
+ const x=tokens.get(d.mint);if(!x||!active.has(d.mint))return;
+ const sol=num(d.solAmount);
+ const quoteMint=d.quoteMint||null;
+ const quoteAmount=num(d.quoteAmount);
+ let solValue=null;
+ if(sol!==null)solValue=sol;
+ else if(quoteMint===WRAPPED_SOL&&quoteAmount!==null)solValue=quoteAmount;
+ const trader=d.traderPublicKey||null;
+ x.trades.push({at:Date.now(),side:d.txType,sol:solValue,trader,signature:d.signature||null,quoteMint});
+ x.trades=x.trades.filter(t=>Date.now()-t.at<=SAMPLE_MS);
+ tradeTotal++;updateCounters();render();
+}
+function metrics(x){
+ const ts=x.trades,buys=ts.filter(t=>t.side==="buy"),sells=ts.filter(t=>t.side==="sell");
+ const wallets=new Set(buys.map(t=>t.trader).filter(Boolean)).size;
+ const buySol=buys.reduce((a,t)=>a+(t.sol??0),0),sellSol=sells.reduce((a,t)=>a+(t.sol??0),0);
+ const knownSol=ts.filter(t=>t.sol!==null).length,allSolKnown=knownSol===ts.length;
+ return {count:ts.length,buys:buys.length,sells:sells.length,wallets,buyPct:ts.length?100*buys.length/ts.length:null,net:allSolKnown?buySol-sellSol:null,buySol,sellSol,allSolKnown};
+}
+function evaluate(x){
+ const s=metrics(x),fBuy=num($("fBuy").value)??60,fW=num($("fWallets").value)??5,fNet=num($("fNet").value)??.3,fTrades=num($("fTrades").value)??8,fLiq=num($("fLiq").value)??5000,fDrop=num($("fDrop").value)??20;
+ if(!x.sampleStarted)return ["ČEKAJ UZORAK","warn",false];
+ if(s.count<fTrades||s.wallets<fW||s.buyPct===null)return [x.sampleEnded?"UZORAK PREMALEN":"PRATI SE · UZORAK U TIJEKU","warn",false];
+ if(s.net===null)return ["QUOTE NIJE SOL · NETO NEPOZNAT","warn",false];
+ if(s.net<=0||s.buyPct<50)return ["IZBJEGAVATI · PRODAJNI PRITISAK","bad",false];
+ if(x.drop!==null&&x.drop>fDrop)return ["IZBJEGAVATI · PAD CIJENE","bad",false];
+ if(!x.dex)return ["ČEKAJ DEX PODATKE","warn",false];
+ if(x.dex.liq===null||x.dex.liq<fLiq)return ["LIKVIDNOST ISPOD MINIMUMA","bad",false];
+ if(s.buyPct>=fBuy&&s.wallets>=fW&&s.net>=fNet)return ["MOMENTUM POTVRĐEN","good",true];
+ return ["PRATITI · BEZ POTVRDE","warn",false];
+}
+function render(){
+ const q=$("search").value.trim().toLowerCase(),view=$("fView").value;
+ const rows=[...tokens.values()].filter(x=>{const [lab,,ok]=evaluate(x);return (!q||[x.name,x.symbol,x.mint].some(v=>String(v||"").toLowerCase().includes(q)))&&(view==="all"||(view==="candidate"&&ok)||(view==="avoid"&&(lab.includes("IZBJEGAVATI")||lab.includes("ISPOD"))))}).sort((a,b)=>{const aa=a.sampleStarted&&!a.sampleEnded,bb=b.sampleStarted&&!b.sampleEnded;return Number(bb)-Number(aa)||b.created-a.created});
+ $("shown").textContent=rows.length;
+ $("feed").innerHTML=rows.length?rows.map(x=>{
+  const s=metrics(x),[lab,cls]=evaluate(x),d=x.dex;
+  const shown=(v)=>x.sampleStarted?fmt(v,0):"—";
+  const netText=x.sampleStarted?(s.net===null?"N/A":fmt(s.net,3)):"—";
+  const buyPct=x.sampleStarted?fmt(s.buyPct,0)+"%":"—";
+  const walletText=x.sampleStarted?fmt(s.wallets,0):"—";
+  const tradeText=x.sampleStarted?fmt(s.buys,0)+" / "+fmt(s.sells,0):"— / —";
+  const sampleText=x.sampleStarted?(x.sampleEnded?"Uzorak završen":"Uzorak u tijeku"):"Još nije praćen";
+  return `<article class="token"><div class="tokenhead"><div><div class="name">${esc(x.name)}</div><div class="symbol">$${esc(x.symbol)}</div></div><div class="age">${fmt(age(x.created),1)} min</div></div><div class="signal ${cls}">${lab}</div><div class="metrics"><div class="metric"><small>BUY / SELL</small><b>${tradeText}</b></div><div class="metric"><small>Jedinstveni kupci</small><b>${walletText}</b></div><div class="metric"><small>Neto SOL · uzorak</small><b>${netText}</b></div><div class="metric"><small>BUY udio</small><b>${buyPct}</b></div><div class="metric"><small>Likvidnost USD</small><b>${d?("$"+fmt(d.liq,0)):"N/A"}</b></div><div class="metric"><small>Pad od prvog DEX snimka</small><b>${x.drop===null?"N/A":fmt(x.drop,1)+"%"}</b></div></div><div class="note">${sampleText} · ${esc(x.trackState)}${x.migration?" · "+esc(x.migration):""}${d?` · DEX 5m: ${fmt(d.buys,0)} BUY / ${fmt(d.sells,0)} SELL · volumen $${fmt(d.vol,0)}`:" · DEX par još nije pronađen"}</div><div class="links"><a target="_blank" rel="noopener" href="https://pump.fun/coin/${encodeURIComponent(x.mint)}">Pump.fun ↗</a><a target="_blank" rel="noopener" href="${esc(d?.url||"https://dexscreener.com/solana/"+x.mint)}">DEX Screener ↗</a><button data-copy="${esc(x.mint)}">Kopiraj CA</button></div></article>`;
+ }).join(""):'<div class="empty">Nema tokena za odabrane filtere.</div>';
+}
+async function dexRefresh(){
+ const now=Date.now(),all=[...tokens.values()].sort((a,b)=>b.created-a.created);
+ if(!all.length)return;
+ const batch=[];
+ for(let i=0;i<Math.min(DEX_BATCH,all.length);i++){const idx=(dexCursor+i)%all.length,b=all[idx];if(now-b.dexChecked>=DEX_INTERVAL)batch.push(b)}
+ dexCursor=(dexCursor+DEX_BATCH)%all.length;
+ for(const x of batch){
+  x.dexChecked=Date.now();
+  try{
+   const r=await fetch(DEX+encodeURIComponent(x.mint),{cache:"no-store"});if(!r.ok)continue;
+   const pairs=await r.json();if(!Array.isArray(pairs)||!pairs.length)continue;
+   const p=pairs.filter(p=>p.chainId==="solana").sort((a,b)=>(b.liquidity?.usd||0)-(a.liquidity?.usd||0))[0];if(!p)continue;
+   const price=num(p.priceUsd),liq=num(p.liquidity?.usd),vol=num(p.volume?.m5),tx=p.txns?.m5||{};
+   x.dex={price,liq,vol,buys:num(tx.buys),sells:num(tx.sells),url:p.url||`https://dexscreener.com/solana/${p.pairAddress}`};
+   if(price!==null){if(x.dexFirstPrice===null)x.dexFirstPrice=price;x.dexPeak=x.dexPeak===null?price:Math.max(x.dexPeak,price);x.drop=x.dexFirstPrice>0?100*(x.dexFirstPrice-price)/x.dexFirstPrice:null;}
+  }catch(e){x.dexError=String(e.message||e)}
+ }
+ $("pairs").textContent=[...tokens.values()].filter(x=>x.dex).length;render();
+}
 $("feed").addEventListener("click",async e=>{const b=e.target.closest("[data-copy]");if(!b)return;try{await navigator.clipboard.writeText(b.dataset.copy);b.textContent="Kopirano ✓"}catch{prompt("Kopiraj CA",b.dataset.copy)}});
 $("apply").onclick=render;$("search").oninput=render;$("fView").onchange=render;
-$("pause").onclick=()=>{paused=!paused;if(paused){clearTimeout(timer);for(const mint of active.keys())send({method:"unsubscribeTokenTrade",keys:[mint]});send({method:"unsubscribeNewToken"});socket?.close();active.clear();$("pause").textContent="Pokreni feed";status("Pauzirano")}else{$("pause").textContent="Pauziraj feed";connect()}};
-$("clear").onclick=()=>{tokens.clear();queue.length=0;total=0;$("total").textContent="0";$("pairs").textContent="0";render()};
-setInterval(()=>{for(const [mint,t] of active){if(Date.now()>=t.until){send({method:"unsubscribeTokenTrade",keys:[mint]});active.delete(mint);const x=tokens.get(mint);if(x)x.trackState="Uzorak završen"}}pump();$("tracked").textContent=active.size+"/5";render()},3000);
-setInterval(dexRefresh,DEX_POLL_MS);connect();
+$("pause").onclick=()=>{paused=!paused;if(paused){clearTimeout(retryTimer);if(active.size)send({method:"unsubscribeTokenTrade",keys:[...active.keys()]});if(subPending.size)send({method:"unsubscribeTokenTrade",keys:[...subPending]});send({method:"unsubscribeNewToken"});socket?.close();active.clear();subPending.clear();for(const x of tokens.values())if(x.sampleStarted&&!x.sampleEnded){x.sampleEnded=Date.now();x.trackState="Pauzirano"}$("pause").textContent="Pokreni feed";setStatus("Pauzirano");setDiag("Feed pauziran. Nema pozadinskog praćenja.")}else{$("pause").textContent="Pauziraj feed";connect()}updateCounters();render()};
+$("clear").onclick=()=>{tokens.clear();queue=[];total=0;tradeTotal=0;dexCursor=0;$("total").textContent="0";$("pairs").textContent="0";updateCounters();render()};
+setInterval(()=>{
+ const now=Date.now();
+ for(const [mint,t] of active){if(now>=t.until){send({method:"unsubscribeTokenTrade",keys:[mint]});active.delete(mint);const x=tokens.get(mint);if(x){x.sampleEnded=now;x.trackState="Uzorak završen"}}}
+ // Expire unacknowledged subscriptions visibly; never count them as active.
+ for(const mint of [...subPending]){const x=tokens.get(mint);if(x&&x.sampleRequested&&now-x.sampleRequested>10000){subPending.delete(mint);x.trackState="ACK nije stigao";}}
+ pump();updateCounters();render();
+},2000);
+setInterval(dexRefresh,DEX_INTERVAL);
+connect();
 })();
 </script></body></html>
